@@ -26,68 +26,76 @@ const images = [
 ];
 
 const categories = ["makeup", "skincare", "fragrance", "hair"];
-const names = [
-  "Velvet Beauty", "Pure Glow", "Rose Touch", "Daily Care",
-  "Soft Bloom", "Beauty Edit", "Silk Care", "Amour Collection"
-];
+const names = ["Velvet Beauty", "Pure Glow", "Rose Touch", "Daily Care", "Soft Bloom", "Beauty Edit", "Silk Care", "Amour Collection"];
+const prices = [18,25,32,39,46,53,60,24,31,38,45,52,59,23,30,37,44,51,58,22,29,36,43,50];
 
 const products = images.map((image, i) => ({
+  id: i,
   image,
-  name: names[i % names.length],
+  name: i < 8 ? names[i] : `${names[i % names.length]} ${Math.floor(i / 8) + 1}`,
   category: categories[i % categories.length],
-  price: 18 + (i * 7) % 43
+  price: prices[i]
 }));
 
-const productsContainer = document.getElementById("products");
-const productCount = document.getElementById("productCount");
-const cartCount = document.getElementById("cartCount");
-const cartItems = document.getElementById("cartItems");
-const cartTotal = document.getElementById("cartTotal");
-const cartOverlay = document.getElementById("cartOverlay");
-const searchBox = document.getElementById("searchBox");
-const searchInput = document.getElementById("searchInput");
-const nav = document.getElementById("nav");
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+const productsContainer = $("#products");
+const productCount = $("#productCount");
+const cartCount = $("#cartCount");
+const cartItems = $("#cartItems");
+const cartTotal = $("#cartTotal");
+const cartOverlay = $("#cartOverlay");
+const searchBox = $("#searchBox");
+const searchInput = $("#searchInput");
+const nav = $("#nav");
 
 let cart = [];
 
 function displayProducts(list) {
-  if (!productsContainer || !productCount) return;
+  if (!productsContainer) return;
+  if (productCount) productCount.textContent = list.length;
 
-  productCount.textContent = list.length;
-  productsContainer.innerHTML = list.map((product) => {
-    const index = products.indexOf(product);
-    return `
-      <article class="product">
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" loading="lazy">
-          <button class="wishlist" type="button" data-wish="false">♡</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">${product.category}</span>
-          <h3 class="product-name">${product.name}</h3>
-          <div class="product-bottom">
-            <span class="price">$${product.price.toFixed(2)}</span>
-            <button class="add-cart" type="button" data-index="${index}">Add to bag</button>
-          </div>
-        </div>
-      </article>`;
-  }).join("");
+  if (!list.length) {
+    productsContainer.innerHTML = '<div class="empty-products">No beauty products found.</div>';
+    return;
+  }
 
-  productsContainer.querySelectorAll(".add-cart").forEach(button => {
+  productsContainer.innerHTML = list.map(product => `
+    <article class="product">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        <button class="wishlist" type="button" data-wish="false" aria-label="Add ${product.name} to wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <span class="product-category">${product.category === "hair" ? "Hair Care" : product.category}</span>
+        <h3 class="product-name">${product.name}</h3>
+        <div class="product-bottom">
+          <span class="price">$${product.price.toFixed(2)}</span>
+          <button class="add-cart" type="button" data-index="${product.id}">Add to bag</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  $$(".add-cart").forEach(button => {
     button.addEventListener("click", () => addToCart(Number(button.dataset.index)));
   });
 
-  productsContainer.querySelectorAll(".wishlist").forEach(button => {
+  $$(".wishlist").forEach(button => {
     button.addEventListener("click", () => {
       const active = button.dataset.wish === "true";
       button.dataset.wish = String(!active);
       button.textContent = active ? "♡" : "♥";
+      button.classList.toggle("active", !active);
+      button.setAttribute("aria-label", active ? "Add to wishlist" : "Remove from wishlist");
     });
   });
 }
 
 function updateCart() {
   if (!cartCount || !cartItems || !cartTotal) return;
+
   cartCount.textContent = cart.length;
 
   if (!cart.length) {
@@ -103,13 +111,14 @@ function updateCart() {
       <div class="cart-item">
         <img src="${product.image}" alt="${product.name}">
         <div><h4>${product.name}</h4><p>$${product.price.toFixed(2)}</p></div>
-        <button class="remove-item" type="button" data-remove="${index}">×</button>
-      </div>`;
+        <button class="remove-item" type="button" data-remove="${index}" aria-label="Remove ${product.name}">×</button>
+      </div>
+    `;
   }).join("");
 
   cartTotal.textContent = `$${total.toFixed(2)}`;
 
-  cartItems.querySelectorAll("[data-remove]").forEach(button => {
+  $$('[data-remove]').forEach(button => {
     button.addEventListener("click", () => {
       cart.splice(Number(button.dataset.remove), 1);
       updateCart();
@@ -117,61 +126,102 @@ function updateCart() {
   });
 }
 
-function addToCart(index) {
-  if (!products[index]) return;
-  cart.push(products[index]);
-  updateCart();
+function openCart() {
   cartOverlay?.classList.add("show");
+  cartOverlay?.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
 }
 
-// Categories
+function closeCart() {
+  cartOverlay?.classList.remove("show");
+  cartOverlay?.setAttribute("aria-hidden", "true");
+  if (!searchBox?.classList.contains("show")) document.body.style.overflow = "";
+}
 
-document.querySelectorAll(".category").forEach(button => {
+function addToCart(index) {
+  const product = products[index];
+  if (!product) return;
+  cart.push(product);
+  updateCart();
+  openCart();
+}
+
+function filterProducts(category) {
+  displayProducts(category === "all" ? products : products.filter(product => product.category === category));
+}
+
+// Category filtering
+$$('.category').forEach(button => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
+    $$('.category').forEach(item => item.classList.remove("active"));
     button.classList.add("active");
-    const category = button.dataset.category;
-    displayProducts(category === "all" ? products : products.filter(p => p.category === category));
+    filterProducts(button.dataset.category);
   });
 });
 
 // Cart
+$("#cartBtn")?.addEventListener("click", openCart);
+$("#closeCart")?.addEventListener("click", closeCart);
+cartOverlay?.addEventListener("click", event => {
+  if (event.target === cartOverlay) closeCart();
+});
 
-document.getElementById("cartBtn")?.addEventListener("click", () => cartOverlay?.classList.add("show"));
-document.getElementById("closeCart")?.addEventListener("click", () => cartOverlay?.classList.remove("show"));
-cartOverlay?.addEventListener("click", e => {
-  if (e.target === cartOverlay) cartOverlay.classList.remove("show");
+$("#checkoutBtn")?.addEventListener("click", () => {
+  if (!cart.length) {
+    alert("Your bag is empty.");
+    return;
+  }
+  alert("Checkout is ready to be connected to your payment system.");
 });
 
 // Search
-
-document.getElementById("searchBtn")?.addEventListener("click", () => {
+$("#searchBtn")?.addEventListener("click", () => {
   searchBox?.classList.add("show");
-  setTimeout(() => searchInput?.focus(), 100);
+  searchBox?.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => searchInput?.focus(), 120);
 });
 
-document.getElementById("closeSearch")?.addEventListener("click", () => {
+function closeSearch() {
   searchBox?.classList.remove("show");
+  searchBox?.setAttribute("aria-hidden", "true");
   if (searchInput) searchInput.value = "";
-  displayProducts(products);
+  filterProducts("all");
+  $$('.category').forEach(item => item.classList.toggle("active", item.dataset.category === "all"));
+  if (!cartOverlay?.classList.contains("show")) document.body.style.overflow = "";
+}
+
+$("#closeSearch")?.addEventListener("click", closeSearch);
+searchBox?.addEventListener("click", event => {
+  if (event.target === searchBox) closeSearch();
 });
 
 searchInput?.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase().trim();
-  const filtered = products.filter(p =>
-    p.name.toLowerCase().includes(value) || p.category.includes(value)
+  const filtered = products.filter(product =>
+    product.name.toLowerCase().includes(value) || product.category.toLowerCase().includes(value)
   );
   displayProducts(filtered);
 });
 
-// Mobile menu
+// Mobile navigation
+$("#menuBtn")?.addEventListener("click", () => {
+  nav?.classList.toggle("show");
+});
 
-document.getElementById("menuBtn")?.addEventListener("click", () => nav?.classList.toggle("show"));
-nav?.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("show")));
+nav?.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => nav.classList.remove("show"));
+});
 
-// Start
+// Escape closes overlays
+window.addEventListener("keydown", event => {
+  if (event.key !== "Escape") return;
+  if (searchBox?.classList.contains("show")) closeSearch();
+  if (cartOverlay?.classList.contains("show")) closeCart();
+  nav?.classList.remove("show");
+});
 
+// Initial render
 displayProducts(products);
 updateCart();
-const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
+if ($("#year")) $("#year").textContent = new Date().getFullYear();
