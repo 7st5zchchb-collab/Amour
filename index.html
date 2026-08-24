@@ -1,373 +1,290 @@
 <!DOCTYPE html>
-<html lang="hy">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Amour</title>
-    <meta name="description" content="Amour — գեղեցիկ և ժամանակակից կայք">
+    <title>Amour — Beauty & Cosmetics</title>
+    <meta name="description" content="Amour Beauty & Cosmetics">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Background -->
-    <div class="background-glow glow-one"></div>
-    <div class="background-glow glow-two"></div>
+<header class="header">
+    <a href="#home" class="logo">
+        <span class="logo-mark">A</span>
+        <span>Amour</span>
+    </a>
 
-    <!-- Header -->
-    <header class="header">
+    <nav class="nav" id="nav">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+    </nav>
 
-        <a href="#" class="logo">
-            <span class="logo-heart">♥</span>
-            <span>Amour</span>
-        </a>
-
-        <nav class="navigation" id="navigation">
-            <a href="#home" class="active">Գլխավոր</a>
-            <a href="#about">Մեր մասին</a>
-            <a href="#features">Հնարավորություններ</a>
-            <a href="#contact">Կապ</a>
-        </nav>
-
-        <button class="menu-button" id="menuButton" aria-label="Բացել մենյուն">
-            <span></span>
-            <span></span>
-            <span></span>
+    <div class="header-actions">
+        <button id="searchBtn">⌕</button>
+        <button id="cartBtn" class="cart-button">
+            ♡
+            <span id="cartCount">0</span>
         </button>
+        <button id="menuBtn" class="menu-btn">☰</button>
+    </div>
+</header>
 
-    </header>
 
+<main>
 
-    <!-- Hero -->
-    <main>
+    <!-- HERO -->
 
-        <section class="hero" id="home">
+    <section class="hero" id="home">
 
-            <div class="hero-content">
+        <div class="hero-text">
+            <span class="eyebrow">AMOUR BEAUTY</span>
 
-                <div class="small-label">
-                    <span class="pulse-dot"></span>
-                    Բարի գալուստ Amour
-                </div>
-
-                <h1>
-                    Սերը սկսվում է
-                    <span>այստեղ</span>
-                </h1>
-
-                <p>
-                    Amour-ը ստեղծված է գեղեցիկ պահերը,
-                    զգացմունքներն ու հիշողությունները մեկ
-                    վայրում հավաքելու համար։
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="#features" class="primary-button">
-                        Բացահայտել
-                        <span>→</span>
-                    </a>
-
-                    <a href="#about" class="secondary-button">
-                        Իմանալ ավելին
-                    </a>
-                </div>
-
-                <div class="hero-statistics">
-
-                    <div class="stat">
-                        <strong>100%</strong>
-                        <span>Սեր</span>
-                    </div>
-
-                    <div class="stat-divider"></div>
-
-                    <div class="stat">
-                        <strong>∞</strong>
-                        <span>Հիշողություններ</span>
-                    </div>
-
-                    <div class="stat-divider"></div>
-
-                    <div class="stat">
-                        <strong>24/7</strong>
-                        <span>Ջերմություն</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Heart visual -->
-            <div class="hero-visual">
-
-                <div class="circle circle-large"></div>
-                <div class="circle circle-medium"></div>
-                <div class="circle circle-small"></div>
-
-                <div class="heart-container">
-
-                    <div class="heart-shadow"></div>
-
-                    <div class="big-heart">
-                        ♥
-                    </div>
-
-                    <div class="heart-spark spark-one">✦</div>
-                    <div class="heart-spark spark-two">✧</div>
-                    <div class="heart-spark spark-three">♥</div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- About -->
-        <section class="about section" id="about">
-
-            <div class="section-heading">
-
-                <span class="section-label">AMOUR</span>
-
-                <h2>
-                    Ամենագեղեցիկ
-                    <span>զգացմունքների</span> համար
-                </h2>
-
-                <p>
-                    Երբեմն մեկ բառը բավական է ամեն ինչ ասելու համար։
-                    Amour-ը ստեղծված է հենց այդ զգացողությունը փոխանցելու համար։
-                </p>
-
-            </div>
-
-            <div class="about-grid">
-
-                <div class="about-card large-card">
-
-                    <div class="card-icon">♥</div>
-
-                    <h3>Սիրո պատմություններ</h3>
-
-                    <p>
-                        Ստեղծիր և պահպանիր քո ամենակարևոր
-                        պատմությունները մեկ գեղեցիկ վայրում։
-                    </p>
-
-                    <span class="card-number">01</span>
-
-                </div>
-
-
-                <div class="about-card">
-
-                    <div class="card-icon">✦</div>
-
-                    <h3>Հիշողություններ</h3>
-
-                    <p>
-                        Յուրաքանչյուր պահ կարող է դառնալ
-                        գեղեցիկ հիշողություն։
-                    </p>
-
-                    <span class="card-number">02</span>
-
-                </div>
-
-
-                <div class="about-card">
-
-                    <div class="card-icon">♡</div>
-
-                    <h3>Զգացմունքներ</h3>
-
-                    <p>
-                        Կիսվիր այն զգացմունքներով,
-                        որոնք դժվար է բառերով նկարագրել։
-                    </p>
-
-                    <span class="card-number">03</span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Features -->
-        <section class="features section" id="features">
-
-            <div class="section-heading center">
-
-                <span class="section-label">ՀՆԱՐԱՎՈՐՈՒԹՅՈՒՆՆԵՐ</span>
-
-                <h2>
-                    Ինչ է առաջարկում
-                    <span>Amour-ը</span>
-                </h2>
-
-            </div>
-
-
-            <div class="features-grid">
-
-                <article class="feature-card">
-
-                    <div class="feature-top">
-                        <span class="feature-icon">♥</span>
-                        <span class="feature-arrow">↗</span>
-                    </div>
-
-                    <h3>Քո աշխարհը</h3>
-
-                    <p>
-                        Ստեղծիր քո անձնական տարածքը
-                        և պահիր այնտեղ ամենակարևոր պահերը։
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card featured">
-
-                    <div class="feature-top">
-                        <span class="feature-icon">✦</span>
-                        <span class="feature-arrow">↗</span>
-                    </div>
-
-                    <h3>Հատուկ պահեր</h3>
-
-                    <p>
-                        Յուրաքանչյուր կարևոր պահ դարձրու
-                        ավելի առանձնահատուկ և հիշվող։
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-top">
-                        <span class="feature-icon">♡</span>
-                        <span class="feature-arrow">↗</span>
-                    </div>
-
-                    <h3>Միասին</h3>
-
-                    <p>
-                        Amour-ը միավորում է մարդկանց,
-                        պատմությունները և զգացմունքները։
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- Quote -->
-        <section class="quote-section">
-
-            <div class="quote-mark">“</div>
-
-            <blockquote>
-                Սերը այն միակ բանն է,
-                որը որքան շատ ես տալիս,
-                այնքան ավելի շատ է դառնում։
-            </blockquote>
-
-            <div class="quote-line"></div>
-
-            <span>AMOUR</span>
-
-        </section>
-
-
-        <!-- Contact -->
-        <section class="contact section" id="contact">
-
-            <div class="contact-box">
-
-                <div>
-
-                    <span class="section-label">ԿԱՊ</span>
-
-                    <h2>
-                        Սկսենք ինչ-որ
-                        <span>գեղեցիկ բան</span>
-                    </h2>
-
-                    <p>
-                        Amour-ի պատմությունը դեռ նոր է սկսվում։
-                    </p>
-
-                </div>
-
-                <button class="contact-button" id="contactButton">
-                    Սկսել հիմա
-                    <span>→</span>
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer class="footer">
-
-        <div class="footer-logo">
-            <span>♥</span>
-            Amour
-        </div>
-
-        <p>
-            Ստեղծված է սիրով ♥
-        </p>
-
-        <p class="copyright">
-            © <span id="year"></span> Amour. Բոլոր իրավունքները պաշտպանված են։
-        </p>
-
-    </footer>
-
-
-    <!-- Modal -->
-    <div class="modal" id="modal">
-
-        <div class="modal-content">
-
-            <button class="modal-close" id="modalClose">
-                ×
-            </button>
-
-            <div class="modal-heart">♥</div>
-
-            <h2>Բարի գալուստ Amour</h2>
+            <h1>
+                Your beauty.
+                <em>Your way.</em>
+            </h1>
 
             <p>
-                Ամեն ինչ սկսվում է մեկ փոքրիկ զգացողությունից։
-                Շնորհակալություն, որ այստեղ ես։
+                Discover carefully selected beauty and cosmetic
+                products designed to make your everyday routine
+                feel more beautiful.
             </p>
 
-            <button class="modal-button" id="modalOkay">
-                Շարունակել
+            <a href="#shop" class="hero-btn">
+                Shop Collection
+                <span>→</span>
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img src="photo_2026-08-24_14-49-03.jpg" alt="Amour Beauty">
+            <div class="hero-badge">
+                <strong>NEW</strong>
+                <span>Beauty Collection</span>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="categories" id="categories">
+
+        <div class="section-title">
+            <span>DISCOVER</span>
+            <h2>Shop by category</h2>
+        </div>
+
+        <div class="category-list">
+
+            <button class="category active" data-category="all">
+                <span>✦</span>
+                All
+            </button>
+
+            <button class="category" data-category="makeup">
+                <span>◉</span>
+                Makeup
+            </button>
+
+            <button class="category" data-category="skincare">
+                <span>♡</span>
+                Skincare
+            </button>
+
+            <button class="category" data-category="fragrance">
+                <span>✧</span>
+                Fragrance
+            </button>
+
+            <button class="category" data-category="hair">
+                <span>❋</span>
+                Hair Care
             </button>
 
         </div>
+
+    </section>
+
+
+    <!-- SHOP -->
+
+    <section class="shop" id="shop">
+
+        <div class="shop-heading">
+
+            <div>
+                <span class="section-label">OUR COLLECTION</span>
+                <h2>Beauty essentials</h2>
+            </div>
+
+            <div class="product-count">
+                <span id="productCount">0</span> products
+            </div>
+
+        </div>
+
+        <div class="products" id="products"></div>
+
+    </section>
+
+
+    <!-- PROMO -->
+
+    <section class="promo">
+
+        <div>
+            <span>AMOUR SPECIAL</span>
+
+            <h2>
+                Beauty begins
+                with you.
+            </h2>
+
+            <p>
+                Find something beautiful for your everyday routine.
+            </p>
+
+            <a href="#shop">
+                Explore products →
+            </a>
+        </div>
+
+        <div class="promo-symbol">A</div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="about-image">
+            <img src="photo_2026-08-24_14-43-02.jpg" alt="Amour">
+        </div>
+
+        <div class="about-text">
+
+            <span class="section-label">ABOUT AMOUR</span>
+
+            <h2>
+                Beauty is not
+                <em>one size fits all.</em>
+            </h2>
+
+            <p>
+                At Amour, we believe beauty should feel personal.
+                That's why we bring together products for makeup,
+                skincare, fragrance and hair care in one elegant
+                collection.
+            </p>
+
+            <div class="about-items">
+
+                <div>
+                    <strong>01</strong>
+                    <span>Carefully selected products</span>
+                </div>
+
+                <div>
+                    <strong>02</strong>
+                    <span>Modern beauty essentials</span>
+                </div>
+
+                <div>
+                    <strong>03</strong>
+                    <span>Made for your routine</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- CART -->
+
+<div class="cart-overlay" id="cartOverlay">
+
+    <aside class="cart">
+
+        <div class="cart-header">
+            <h2>Your bag</h2>
+            <button id="closeCart">×</button>
+        </div>
+
+        <div id="cartItems" class="cart-items">
+            <p class="empty-cart">Your bag is empty.</p>
+        </div>
+
+        <div class="cart-footer">
+
+            <div>
+                <span>Total</span>
+                <strong id="cartTotal">$0.00</strong>
+            </div>
+
+            <button class="checkout">
+                Checkout →
+            </button>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-box" id="searchBox">
+
+    <div class="search-inner">
+
+        <button id="closeSearch">×</button>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search beauty products..."
+        >
 
     </div>
 
+</div>
 
-    <script src="script.js"></script>
 
+<footer>
+
+    <div class="footer-logo">
+        <span>A</span>
+        Amour
+    </div>
+
+    <p>
+        Beauty made personal.
+    </p>
+
+    <small>
+        © <span id="year"></span> Amour Beauty
+    </small>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
 </body>
 </html>
