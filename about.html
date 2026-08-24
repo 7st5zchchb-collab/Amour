@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Amour Beauty — contact, opening hours and delivery information.">
+<title>About — Amour Beauty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=7">
+<style>
+.about-page{max-width:1180px;margin:0 auto;padding:90px 24px 120px}.about-hero{text-align:center;max-width:760px;margin:0 auto 75px}.about-hero h1{font-family:"Playfair Display",serif;font-size:clamp(55px,8vw,90px);font-weight:500;line-height:.95;margin:18px 0 25px}.about-hero h1 em{color:var(--rose)}.about-hero p{color:var(--gray);line-height:1.8;max-width:650px;margin:auto}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.info-card{background:#fff;padding:34px 28px;min-height:220px;border:1px solid var(--line)}.info-card .number{color:var(--rose);font-size:10px;font-weight:700;letter-spacing:2px}.info-card h2{font-family:"Playfair Display",serif;font-size:28px;font-weight:500;margin:12px 0 18px}.info-card p{color:var(--gray);font-size:13px;line-height:1.8}.info-card strong{display:block;color:var(--black);font-size:15px;margin-top:8px}.back-home{display:inline-flex;margin-top:55px;background:var(--black);color:#fff;padding:16px 24px;font-size:12px}.about-photo{margin-top:70px;height:430px;overflow:hidden;background:var(--soft)}.about-photo img{width:100%;height:100%;object-fit:cover;display:block}@media(max-width:800px){.about-page{padding:60px 20px 80px}.info-grid{grid-template-columns:1fr}.about-photo{height:90vw;max-height:500px}}
+</style>
+</head>
+<body>
+<header class="header">
+  <a class="logo" href="index.html" aria-label="Amour home"><span class="logo-mark">A</span><span>Amour</span></a>
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <a href="index.html">Home</a><a href="index.html#categories">Categories</a><a href="about.html">About</a>
+  </nav>
+  <div class="header-actions"><a class="hero-btn" href="index.html" style="padding:11px 17px">Back to shop</a><button id="menuBtn" class="menu-btn" aria-label="Open menu" type="button">☰</button></div>
+</header>
+
+<main class="about-page">
+  <section class="about-hero">
+    <span class="section-label">ABOUT AMOUR</span>
+    <h1>Beauty made for <em>your everyday.</em></h1>
+    <p>Amour brings together carefully selected makeup, skincare, fragrance and hair care essentials in a simple and elegant experience.</p>
+  </section>
+
+  <section class="info-grid" aria-label="Amour information">
+    <article class="info-card"><span class="number">01 · CONTACT</span><h2>Get in touch</h2><p>For questions about products, orders or delivery, contact our team.</p><strong>+374 00 00 00 00</strong><strong>hello@amourbeauty.com</strong></article>
+    <article class="info-card"><span class="number">02 · OPENING HOURS</span><h2>When we work</h2><p>Monday – Friday</p><strong>10:00 – 19:00</strong><p style="margin-top:12px">Saturday</p><strong>11:00 – 17:00</strong><p style="margin-top:12px">Sunday · Closed</p></article>
+    <article class="info-card"><span class="number">03 · DELIVERY</span><h2>Delivery</h2><p>Delivery availability and timing depend on your location. Our team will confirm the details when your order is placed.</p><strong>Delivery available</strong><p>Contact us to check your area.</p></article>
+  </section>
+
+  <div class="about-photo"><img src="photo_2026-08-24_14-43-19 (2).jpg" alt="Amour beauty collection"></div>
+  <a class="back-home" href="index.html">← Back to Amour</a>
+</main>
+
+<footer><div class="footer-logo"><span>A</span> Amour</div><small>© <span id="year"></span> Amour Beauty. All rights reserved.</small><small>Beauty. Your way.</small></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('nav')?.classList.toggle('show'));</script>
+</body>
+</html>
